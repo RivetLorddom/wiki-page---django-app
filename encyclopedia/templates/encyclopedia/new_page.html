@@ -1,0 +1,42 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {% if not edit_name %}
+        New Page
+    {% else %}
+        Edit {{ edit_name }}
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {% if edit_name %}
+        <h1>Edit entry content:</h1>
+    {% else %}
+        <h1>Create new wiki entry:</h1>
+    {% endif %}
+
+    <form action="{% url 'encyclopedia:new' %}" method="post">
+        {% csrf_token %} 
+        <input id="title_input" type="text" name="new_title" 
+        {% if edit_name %}
+            value={{ edit_name }}>
+        {% else %}
+            placeholder="Name of entry">
+        {% endif %}
+        <br>
+        <br>
+        <textarea name="new_content" 
+        {% if not edit_content %}
+            placeholder="Description"></textarea>
+        {% else %}
+            >{{ edit_content }}</textarea>
+        {% endif %}
+        <br>
+        {% if edit_name %}
+            <input type="submit" name="edit" value="Accept edit">
+        {% else %}
+            <input type="submit" name="edit" value="Submit entry">
+        {% endif %}
+    </form>
+
+{% endblock %}
