@@ -1,5 +1,5 @@
-# wiki-page---django-app
+# wiki page - django app
 Wiki-styled page with resources created in django
 
-https://youtu.be/QRWRVx-Kd6k
+video: https://youtu.be/QRWRVx-Kd6k
 
